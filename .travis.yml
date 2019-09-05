@@ -1,8 +1,7 @@
 language: csharp  
 sudo: required  
-dist: trusty  
 mono: none
-dotnet: 2.2.401
+dotnet: 2.2
 before_script:
   - dotnet restore ./Rsoi.Net/
 script:  
