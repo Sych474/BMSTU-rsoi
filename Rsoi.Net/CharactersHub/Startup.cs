@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using AutoMapper;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace CharactersHub
 {
@@ -32,6 +33,17 @@ namespace CharactersHub
             services.AddDbContextPool<CharactersHubDbContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
 
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info
+                {
+                    Version = "v1",
+                    Title = "Characters API",
+                    Description = "ASP.NET Core Web API"
+                });
+                c.DescribeAllEnumsAsStrings();
+            });
+
             services.AddAutoMapper(typeof(Startup));
 
             services.AddTransient<ICharactersRepository, CharactersRepository>();
@@ -46,6 +58,12 @@ namespace CharactersHub
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Characters API V1");
+            });
 
             app.UseMvc();
         }

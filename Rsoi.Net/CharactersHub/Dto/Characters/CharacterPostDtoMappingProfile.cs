@@ -7,7 +7,7 @@ namespace CharactersHub.Dto.Characters
     {
         public CharacterPostDtoMappingProfile()
         {
-            CreateMap<CharacterDto, Character>();
+            CreateMap<CharacterPostDto, Character>();
         }
     }
 }
