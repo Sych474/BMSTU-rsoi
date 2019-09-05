@@ -6,3 +6,8 @@ before_script:
   - dotnet restore ./Rsoi.Net/
 script:  
   - dotnet test ./Rsoi.Net/ -c Release
+
+deploy:
+  provider: heroku
+  api_key: fdd1886c-e16e-4db8-aff0-348145575bcd
+  app: ssychev-rsoi-1
