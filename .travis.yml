@@ -11,3 +11,5 @@ deploy:
   provider: heroku
   api_key: fdd1886c-e16e-4db8-aff0-348145575bcd
   app: ssychev-rsoi-1
+  on:
+    all_branches: true
