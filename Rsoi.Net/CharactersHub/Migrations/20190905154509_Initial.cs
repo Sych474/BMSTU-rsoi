@@ -15,7 +15,7 @@ namespace CharactersHub.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
                     Name = table.Column<string>(nullable: true),
                     Level = table.Column<int>(nullable: false),
-                    IsMale = table.Column<bool>(nullable: false)
+                    Race = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

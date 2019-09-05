@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CharactersHub.Migrations
 {
     [DbContext(typeof(CharactersHubDbContext))]
-    [Migration("20190905144859_Initial")]
+    [Migration("20190905154509_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,11 +25,11 @@ namespace CharactersHub.Migrations
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<bool>("IsMale");
-
                     b.Property<int>("Level");
 
                     b.Property<string>("Name");
+
+                    b.Property<int>("Race");
 
                     b.HasKey("Id");
 

@@ -23,11 +23,11 @@ namespace CharactersHub.Migrations
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<bool>("IsMale");
-
                     b.Property<int>("Level");
 
                     b.Property<string>("Name");
+
+                    b.Property<int>("Race");
 
                     b.HasKey("Id");
 

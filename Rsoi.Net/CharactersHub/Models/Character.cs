@@ -1,4 +1,6 @@
-﻿namespace CharactersHub.Models
+﻿using Newtonsoft.Json;
+
+namespace CharactersHub.Models
 {
     public class Character
     {
@@ -8,6 +10,6 @@
 
         public int Level { get; set; }
 
-        public bool IsMale { get; set; }
+        public Race Race { get; set; }
     }
 }
