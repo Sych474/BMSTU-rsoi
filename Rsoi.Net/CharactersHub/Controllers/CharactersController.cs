@@ -29,7 +29,7 @@ namespace CharactersHub.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CharacterDto>>> GetCollection()
         {
-            var characters = await charactersRepository.GetCharacters();
+            var characters = await charactersRepository.GetCharactersAsync();
             return Ok(mapper.Map<IEnumerable<CharacterDto>>(characters));
         }
 
@@ -43,7 +43,7 @@ namespace CharactersHub.Controllers
             ActionResult result;
             if (ModelState.IsValid)
             {
-                var character = await charactersRepository.FindCharacterById(id);
+                var character = await charactersRepository.FindCharacterByIdAsync(id);
                 if (character == null)
                     result = NotFound(id);
                 else
@@ -67,7 +67,7 @@ namespace CharactersHub.Controllers
             {
                 var character = mapper.Map<Character>(entity);
 
-                if (await charactersRepository.AddCharacter(character))
+                if (await charactersRepository.AddCharacterAsync(character))
                     result = CreatedAtAction(nameof(Post), character);
                 else
                     result = Conflict(entity);

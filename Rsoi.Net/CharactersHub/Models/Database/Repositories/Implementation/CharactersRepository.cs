@@ -13,17 +13,17 @@ namespace CharactersHub.Models.Database.Repositories
             this.dbContext = dbContext;
         }
 
-        public Task<Character> FindCharacterById(long id)
+        public Task<Character> FindCharacterByIdAsync(long id)
         {
             return dbContext.Characters.FindAsync(id);
         }
 
-        public Task<List<Character>> GetCharacters()
+        public Task<List<Character>> GetCharactersAsync()
         {
             return dbContext.Characters.ToListAsync();
         }
 
-        public async Task<bool> AddCharacter(Character character)
+        public async Task<bool> AddCharacterAsync(Character character)
         {
             bool result = true;
             try

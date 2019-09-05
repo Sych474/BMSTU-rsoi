@@ -5,10 +5,10 @@ namespace CharactersHub.Models.Database.Repositories
 {
     public interface ICharactersRepository
     {
-        Task<Character> FindCharacterById(long id);
+        Task<Character> FindCharacterByIdAsync(long id);
 
-        Task<List<Character>> GetCharacters();
+        Task<List<Character>> GetCharactersAsync();
 
-        Task<bool> AddCharacter(Character character);
+        Task<bool> AddCharacterAsync(Character character);
     }
 }
