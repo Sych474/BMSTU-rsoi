@@ -10,7 +10,8 @@ script:
   - dotnet test ./Rsoi.Net/ -c Release
 
 #deploy:
+#  before_script: 
 #  provider: script
-#  script: 
+#  script: ./DeployScripts/deploy.sh
 #  on:
 #    all_branches: true
