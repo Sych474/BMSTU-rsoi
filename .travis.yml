@@ -1,4 +1,6 @@
 language: csharp  
+services:
+  - docker
 sudo: required  
 mono: none
 dotnet: 2.2
@@ -7,9 +9,8 @@ before_script:
 script:  
   - dotnet test ./Rsoi.Net/ -c Release
 
-deploy:
-  provider: heroku
-  api_key: fdd1886c-e16e-4db8-aff0-348145575bcd
-  app: ssychev-rsoi-1
-  on:
-    all_branches: true
+#deploy:
+#  provider: script
+#  script: 
+#  on:
+#    all_branches: true
