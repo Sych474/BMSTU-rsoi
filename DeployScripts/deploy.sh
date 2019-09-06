@@ -1,3 +1,7 @@
+docker login -u $registry_login -p $registry_password
+docker build -t webber1580/$SERVICE_NAME:$CI_PIPELINE_ID $PATH_TO_DOCKERFILE
+docker push webber1580/$SERVICE_NAME:$CI_PIPELINE_ID
+
 sudo apt-get install sshpass
 
 if sshpass -p $DEPLOY_HOST_USER_PASSWORD\

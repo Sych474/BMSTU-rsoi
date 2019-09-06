@@ -2,7 +2,7 @@ version: '3.2'
 
 services:
     characters_hub:
-      build: ./Rsoi.Net/CharactersHub/
+      build: webber1580/codechat:${CI_PIPELINE_ID}
       ports:
         - "5000:80"
       depends_on:
