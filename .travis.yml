@@ -1,7 +1,7 @@
 language: csharp  
 services:
   - docker
-sudo: required  
+sudo: true  
 mono: none
 dotnet: 2.2
 before_script:
