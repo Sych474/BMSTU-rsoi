@@ -36,11 +36,18 @@ namespace CharactersHub.Tests.TestUtilits
             Assert.Equal(entity.Race, dto.Race);
         }
 
-        protected void AssertEntityEqualsCharacterPostDto(Character entity, CharacterPostDto dto)
+        protected void AssertCharacterPostDtoEqualsCharacterDto(CharacterPostDto dto, CharacterDto dto2)
         {
-            Assert.Equal(entity.Level, dto.Level);
-            Assert.Equal(entity.Name, dto.Name);
-            Assert.Equal(entity.Race, dto.Race);
+            Assert.Equal(dto.Level, dto2.Level);
+            Assert.Equal(dto.Name, dto2.Name);
+            Assert.Equal(dto.Race, dto2.Race);
+        }
+
+        protected void AssertCharacterPostDtoEqualsCharacter(CharacterPostDto dto, Character entity)
+        {
+            Assert.Equal(dto.Level, entity.Level);
+            Assert.Equal(dto.Name, entity.Name);
+            Assert.Equal(dto.Race, entity.Race);
         }
 
         protected Character GenerateRandomCharacter()
@@ -65,7 +72,7 @@ namespace CharactersHub.Tests.TestUtilits
             };
         }
 
-        protected CharacterPostDto GenerateandomCharacterPostDto()
+        protected CharacterPostDto GenerateRandomCharacterPostDto()
         {
             return new CharacterPostDto()
             {

@@ -60,17 +60,17 @@ namespace CharactersHub.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
         [HttpPost]
-        public async Task<ActionResult<CharacterDto>> Post([FromBody] CharacterPostDto entity)
+        public async Task<ActionResult<CharacterDto>> Post([FromBody] CharacterPostDto postDto)
         {
             ActionResult result;
             if (ModelState.IsValid)
             {
-                var character = mapper.Map<Character>(entity);
+                var character = mapper.Map<Character>(postDto);
 
                 if (await charactersRepository.AddCharacterAsync(character))
-                    result = CreatedAtAction(nameof(Post), character);
+                    result = CreatedAtAction(nameof(Post), mapper.Map<CharacterDto>(character));
                 else
-                    result = Conflict(entity);
+                    result = Conflict();
             }
             else
                 result = BadRequest(ModelState);

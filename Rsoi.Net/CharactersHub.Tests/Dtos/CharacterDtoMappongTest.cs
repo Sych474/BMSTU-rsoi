@@ -1,4 +1,5 @@
-﻿using CharactersHub.Models;
+﻿using CharactersHub.Dto.Characters;
+using CharactersHub.Models;
 using CharactersHub.Tests.TestUtilits;
 using Xunit;
 
@@ -17,6 +18,32 @@ namespace CharactersHub.Tests.Dtos
 
             //Assert
             AssertCharacterDtoEqualsEntity(dto, entity);
+        }
+
+        [Fact]
+        public void EntityToCharacterDtoTest()
+        {
+            //Arrange
+            var entity = GenerateRandomCharacter();
+
+            //Act
+            var dto = mapper.Map<CharacterDto>(entity);
+
+            //Assert
+            AssertEntityEqualsCharacterDto(entity, dto);
+        }
+
+        [Fact]
+        public void CharacterPostDtoToEntityTest()
+        {
+            //Arrange
+            var postDto = GenerateRandomCharacterPostDto();
+
+            //Act
+            var entity = mapper.Map<Character>(postDto);
+
+            //Assert
+            AssertCharacterPostDtoEqualsCharacter(postDto, entity);
         }
     }
 }
