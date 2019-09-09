@@ -1,17 +1,8 @@
 language: csharp  
-services:
-  - docker
-sudo: true  
+sudo: required  
 mono: none
 dotnet: 2.2
 before_script:
   - dotnet restore ./Rsoi.Net/
 script:  
   - dotnet test ./Rsoi.Net/ -c Release
-
-#deploy:
-#  before_script: 
-#  provider: script
-#  script: ./DeployScripts/deploy.sh
-#  on:
-#    all_branches: true
