@@ -2,7 +2,7 @@ jobs:
   include:
     - stage: build docker image
       script:
-      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD" 
       - docker build -t sych474/$SERVICE_NAME:1 ./Rsoi.Net/CharactersHub
       - docker images
       - docker tag sych474/$SERVICE_NAME:1 $DOCKER_USERNAME/$SERVICE_NAME
