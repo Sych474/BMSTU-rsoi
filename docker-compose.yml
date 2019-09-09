@@ -4,7 +4,7 @@ services:
     characters_hub:
       image: sych474/rsoi_characters_hub:1
       ports:
-        - "5000:80"
+        - "80:5000"
       depends_on:
         - database
       networks:
