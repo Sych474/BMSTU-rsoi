@@ -10,4 +10,4 @@ jobs:
     #  - docker push sych474/$SERVICE_NAME:1
 
     - stage: deploy to remote
-      script: ./DeployScripts/deploy.sh
+      script: sudo ./DeployScripts/deploy.sh
