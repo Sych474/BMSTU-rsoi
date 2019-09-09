@@ -1,7 +1,3 @@
-SERVICE_NAME=characters_hub
-PATH_TO_DOCKERFILE=../Rsoi.Net/CharactersHub
-CI_PIPELINE_ID=1
-
 sudo apt-get install sshpass
 
 if sshpass -p $DEPLOY_HOST_USER_PASSWORD\

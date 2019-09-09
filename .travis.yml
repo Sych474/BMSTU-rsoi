@@ -3,11 +3,11 @@ dist: trusty
 
 jobs:
   include:
-    - stage: build docker image
-      script:
-      - docker login -u=$DOCKER_USERNAME -p=$DOCKER_PASSWORD 
-      - docker build -t sych474/$SERVICE_NAME:1 ./Rsoi.Net/CharactersHub
-      - docker push sych474/$SERVICE_NAME:1
-    #- stage: test
-    #  script: docker run --rm $DOCKER_USERNAME/travis-ci-build-stages-demo cat hello.txt
-    #- script: docker run --rm $DOCKER_USERNAME/travis-ci-build-stages-demo cat hello.txt
+    #- stage: build docker image
+    #  script:
+    #  - docker login -u=$DOCKER_USERNAME -p=$DOCKER_PASSWORD 
+    #  - docker build -t sych474/$SERVICE_NAME:1 ./Rsoi.Net/CharactersHub
+    #  - docker push sych474/$SERVICE_NAME:1
+
+    - stage: deploy to remote
+      script: ./DeployScripts/deploy.sh
