@@ -2,7 +2,7 @@ version: '3.2'
 
 services:
     characters_hub:
-      image: webber1580/characters_hub:1
+      image: sych474/rsoi_characters_hub:1
       ports:
         - "5000:80"
       depends_on:
