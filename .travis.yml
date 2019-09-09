@@ -1,8 +1,12 @@
-language: csharp  
-sudo: required  
-mono: none
-dotnet: 2.2
-before_script:
-  - dotnet restore ./Rsoi.Net/
-script:  
-  - dotnet test ./Rsoi.Net/ -c Release
+jobs:
+  include:
+    - stage: build docker image
+      script:
+      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      - docker build -t sych474/$SERVICE_NAME:1 ./Rsoi.Net/CharactersHub
+      - docker images
+      - docker tag sych474/$SERVICE_NAME:1 $DOCKER_USERNAME/$SERVICE_NAME
+      - docker push $DOCKER_USERNAME/sych474
+    #- stage: test
+    #  script: docker run --rm $DOCKER_USERNAME/travis-ci-build-stages-demo cat hello.txt
+    #- script: docker run --rm $DOCKER_USERNAME/travis-ci-build-stages-demo cat hello.txt
