@@ -1,13 +1,20 @@
 sudo: true
-dist: trusty
+language: csharp
+mono: none
+dotnet: 2.2
 
 jobs:
   include:
-    #- stage: build docker image
-    #  script:
-    #  - docker login -u=$DOCKER_USERNAME -p=$DOCKER_PASSWORD 
-    #  - docker build -t sych474/$SERVICE_NAME:1 ./Rsoi.Net/CharactersHub
-    #  - docker push sych474/$SERVICE_NAME:1
+    - stage: unit tests 
+      before_script:
+      - dotnet restore ./Rsoi.Net/
+      script:  
+      - dotnet test ./Rsoi.Net/ -c Release
+    - stage: build docker image
+      script:
+      - docker login -u=$DOCKER_USERNAME -p=$DOCKER_PASSWORD 
+      - docker build -t sych474/$SERVICE_NAME:latest ./Rsoi.Net/CharactersHub
+      - docker push sych474/$SERVICE_NAME:latest
 
     - stage: deploy to remote
       script: 
