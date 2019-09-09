@@ -1,12 +1,13 @@
+sudo: true
+dist: trusty
+
 jobs:
   include:
     - stage: build docker image
       script:
-      - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD" 
+      - docker login -u=$DOCKER_USERNAME -p=$DOCKER_PASSWORD 
       - docker build -t sych474/$SERVICE_NAME:1 ./Rsoi.Net/CharactersHub
-      - docker images
-      - docker tag sych474/$SERVICE_NAME:1 $DOCKER_USERNAME/$SERVICE_NAME
-      - docker push $DOCKER_USERNAME/sych474
+      - docker push sych474/$SERVICE_NAME:1
     #- stage: test
     #  script: docker run --rm $DOCKER_USERNAME/travis-ci-build-stages-demo cat hello.txt
     #- script: docker run --rm $DOCKER_USERNAME/travis-ci-build-stages-demo cat hello.txt
