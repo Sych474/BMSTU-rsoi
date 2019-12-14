@@ -1,0 +1,20 @@
+sudo: true
+language: csharp
+mono: none
+dotnet: 2.2
+
+jobs:
+  include:
+    - stage: unit tests 
+      before_script:
+      - dotnet restore ./Rsoi.Net/
+      script:  
+      - dotnet test ./Rsoi.Net/ -c Release
+    - stage: build and deploy
+      script:
+      - docker login -u=$DOCKER_USERNAME -p=$DOCKER_PASSWORD 
+      - docker build -t sych474/$SERVICE_NAME:latest ./Rsoi.Net/CharactersHub
+      - docker push sych474/$SERVICE_NAME:latest
+      - sudo apt-get install sshpass
+      - sshpass -p $DEPLOY_HOST_USER_PASSWORD scp -o StrictHostKeyChecking=no docker-compose.yml $DEPLOY_HOST_USER@$DEPLOY_HOST_ADDRESS:~;
+      - sshpass -p "$DEPLOY_HOST_USER_PASSWORD" ssh -o StrictHostKeyChecking=no $DEPLOY_HOST_USER@$DEPLOY_HOST_ADDRESS bash -s < DeployScripts/deploy_to_prod.sh
